@@ -7,6 +7,7 @@ module SocialButtons
 
     def tweet_button(options = {})
       clazz = SocialButtons::Tweet
+      options.reverse_merge!( url: request.url )
       params = clazz.options_to_data_params(clazz.default_options.merge(options))
       params.merge!(class: CLASS)
 
@@ -19,7 +20,6 @@ module SocialButtons
     class << self
       def default_options
         @default_options ||= {
-          url:    request.url,
           via:    "tweetbutton",
           text:   "",
           count:  "vertical",
