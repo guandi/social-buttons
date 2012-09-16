@@ -25,7 +25,7 @@ module SocialButtons
       script_context = options[:script] == :async ? clazz::Async : clazz
 
       html = "".html_safe
-      html << content_tag(:div, params)
+      html << content_tag(:div, nil, params)
       html << script_context.script(options[:lang]) if options[:script]
       html
     end
